@@ -45,4 +45,5 @@ Class.prototype.getLessons = function () {
 Class.prototype.getLesson = function (i) {
   return this._lessons[i];
 };
+
 module.exports = Class;

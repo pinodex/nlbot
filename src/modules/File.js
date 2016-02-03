@@ -8,8 +8,9 @@
 
 'use strict';
 
-function File (name, url) {
+function File (name, lessonName, url) {
   this._name = name;
+  this._lessonName = lessonName;
   this._url = url;
 };
 
@@ -19,6 +20,14 @@ File.prototype.setName = function (name) {
 
 File.prototype.getName = function () {
   return this._name;
+};
+
+File.prototype.setLessonName = function (lessonName) {
+  this._lessonName = lessonName;
+}
+
+File.prototype.getLessonName = function () {
+  return this._lessonName;
 };
 
 File.prototype.setUrl = function (url) {

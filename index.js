@@ -11,6 +11,8 @@
 var app = require('./src/start');
 var colors = require('colors/safe');
 
+process.title = 'nlbot - Lazy-read Lessons From Your LMS';
+
 process.stdout.write('\n' + colors.bold.bgRed.white('   DISCLAIMER ') + '\n');
 process.stdout.write(colors.bold.white([
   '   This application is intended for testing purposes only. The',

@@ -24,10 +24,10 @@ var App = function App() {
     if (error) {
       Prompts.loadingAnimation(false);
       
-      Prompts.println(colors.bold.bgRed.white, message || 'An error occurred');
+      Prompts.println(colors.bold.bgRed.white, ' ' + (message || 'An error occurred') + ' ');
       Prompts.println();
     }
-
+    
     Prompts.ask('login', function (err, data) {
       if (!data) {
         return;

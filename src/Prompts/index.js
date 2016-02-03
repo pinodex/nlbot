@@ -14,14 +14,14 @@ var prompt = require('prompt');
 var Prompts = {};
 var questions = {};
 var welcomeBanner = [
-  "        _ _           _      ",
-  "        | | |         | |    ",
-  "   _ __ | | |__   ___ | |_   ",
-  "  | '_ \\| | '_ \\ / _ \\| __|  ",
-  "  | | | | | |_) | (_) | |_   ",
-  "  |_| |_|_|_.__/ \\___/ \\__|  ",
-  "  Make reading lessons quick ",
-  "                             "
+  "                           ____         ______                  ",
+  "  |..          | |        |    ~.     .~      ~.  `````|`````   ",
+  "  |  ``..      | |        |____.'_   |          |      |        ",
+  "  |      ``..  | |        |       ~. |          |      |        ",
+  "  |          ``| |_______ |_______.'  `.______.'       |        ",
+  "                                                                ",
+  "                 Lazy-read Lessons From Your LMS                ",
+  "                                                                "
 ];
 
 var loadingAnimationInterval = null;
@@ -45,11 +45,7 @@ prompt.delimiter = '  ';
 prompt.start();
 
 for (var i = 0; i < welcomeBanner.length; i++) {
-  var padSize = process.stdout.columns - welcomeBanner[i].length - 1;
-
-  for (var x = 0; x < padSize; x++) {
-    welcomeBanner[i] += ' ';
-  }
+  welcomeBanner[i] += ' '.repeat(process.stdout.columns - welcomeBanner[i].length - 1);
 }
 
 welcomeBanner = colors.bold.bgBlue.white(welcomeBanner.join('\n'));
@@ -71,6 +67,7 @@ Prompts.clear = function (noBanner) {
 Prompts.clearLine = function () {
   process.stdout.clearLine();
   process.stdout.cursorTo(0);
+  
   return this;
 }
 
@@ -99,19 +96,11 @@ Prompts.println = function (color, message) {
   return this;
 };
 
-Prompts.printsl = function (color, message) {
-  var message = message || color || '';
-
-  if (typeof color === 'function') {
-    message = color(message);
-  }
-
-  process.stdout.clearLine();
-  process.stdout.cursorTo(0);
-  process.stdout.write(message);
+Prompts.printBanner = function () {
+  console.log(welcomeBanner + '\n');
 
   return this;
-}
+};
 
 Prompts.loadingAnimation = function (status) {
   var initialFrame = true;
@@ -140,17 +129,12 @@ Prompts.loadingAnimation = function (status) {
 
     currentFrame++;
   }, 100);
+
+  return this;
 };
 
-Prompts.progressBar = function(percent, status, noClear) {
-  if (percent < 0) {
-    process.stdout.clearLine();
-    process.stdout.cursorTo(0);
-
-    return;
-  }
-
-  percent = Math.floor(percent);
+Prompts.progressBar = function(completed, total, status, noClear) {
+  var percent = Math.floor((completed / total) * 100);
 
   var barLength = process.stdout.columns - 8;
   var completedLength = barLength * (percent / 100);
@@ -158,7 +142,9 @@ Prompts.progressBar = function(percent, status, noClear) {
   var bar = '';
 
   if (!noClear) {
-    process.stdout.write('\033[1A');
+    var statusLines = status.split('\n').length;
+
+    process.stdout.write('\033[' + statusLines + 'A');
     process.stdout.clearLine();
     process.stdout.cursorTo(0);
   }
@@ -168,10 +154,6 @@ Prompts.progressBar = function(percent, status, noClear) {
   bar += ' ' + percent + '%';
 
   process.stdout.write(status + '\n' + bar);
-};
-
-Prompts.printBanner = function() {
-  console.log(welcomeBanner + '\n');
 
   return this;
 };
@@ -186,6 +168,8 @@ Prompts.ask = function (question, callback) {
   }
   
   prompt.get(question, callback);
+
+  return this;
 };
 
 module.exports = Prompts;
