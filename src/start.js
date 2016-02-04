@@ -20,13 +20,11 @@ var Neo = require('./Neo');
 var _nexeDynamicBundle = false;
 
 if (_nexeDynamicBundle) {
-  require('winston/lib/winston/transports/console');
+  require('winston/lib/winston/nexe-bundle');
 }
 
 var App = function () {
-
-  Prompts.printBanner();
-
+  
   (function login(error, message) {
     Prompts.clear();
 
