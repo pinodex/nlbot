@@ -10,9 +10,9 @@
 
 var colors = require('colors');
 var prompt = require('prompt');
+var questions = require('./questions');
 
 var Prompts = {};
-var questions = {};
 var welcomeBanner = [
   "                           ____         ______                  ",
   "  |..          | |        |    ~.     .~      ~.  `````|`````   ",
@@ -159,15 +159,7 @@ Prompts.progressBar = function(completed, total, status, noClear) {
 };
 
 Prompts.ask = function (question, callback) {
-  if (typeof question === 'string') {
-    if (!(question in questions)) {
-      questions[question] = require('./questions/' + question);
-    }
-
-    question = questions[question];
-  }
-  
-  prompt.get(question, callback);
+  prompt.get(questions[question], callback);
 
   return this;
 };

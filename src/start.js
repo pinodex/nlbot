@@ -8,13 +8,22 @@
 
 'use strict';
 
-var App = function App() {
+var colors = require('colors/safe');
 
-  var colors = require('colors/safe');
-    
-  var Session = require('./modules/Session');
-  var Prompts = require('./Prompts');
-  var Neo = require('./Neo');
+var Session = require('./modules/Session');
+var Prompts = require('./Prompts');
+var Neo = require('./Neo');
+
+/*
+ * Workaround for 'nexe' not bundling dynamic requires.
+ */
+var _nexeDynamicBundle = false;
+
+if (_nexeDynamicBundle) {
+  require('winston/lib/winston/transports/console');
+}
+
+var App = function () {
 
   Prompts.printBanner();
 

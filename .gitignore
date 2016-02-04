@@ -1,2 +1,6 @@
 node_modules/
+node_src/
 *.sublime-*
+
+nexe.js
+nlbot.exe
