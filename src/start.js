@@ -8,12 +8,6 @@
 
 'use strict';
 
-var colors = require('colors/safe');
-
-var Session = require('./modules/Session');
-var Prompts = require('./Prompts');
-var Neo = require('./Neo');
-
 /*
  * Workaround for 'nexe' not bundling dynamic requires.
  */
@@ -23,9 +17,19 @@ if (_nexeDynamicBundle) {
   require('winston/lib/winston/nexe-bundle');
 }
 
+/*
+ * Load String.prototype.repeat polyfill if the
+ * current version does not support it.
+ */
 if (!String.prototype.repeat) {
   String.prototype.repeat = require('./modules/StringRepeatPolyfill');
 }
+
+var colors = require('colors/safe');
+
+var Session = require('./modules/Session');
+var Prompts = require('./Prompts');
+var Neo = require('./Neo');
 
 var App = function () {
   
