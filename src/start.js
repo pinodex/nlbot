@@ -23,6 +23,10 @@ if (_nexeDynamicBundle) {
   require('winston/lib/winston/nexe-bundle');
 }
 
+if (!String.prototype.repeat) {
+  String.prototype.repeat = require('./modules/StringRepeatPolyfill');
+}
+
 var App = function () {
   
   (function login(error, message) {
