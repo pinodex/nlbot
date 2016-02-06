@@ -20,7 +20,7 @@ Although this application get lessons marked as completed easily, you won't lear
 5. Follow on-screen instructions.
 
 #### Seems hard? Try the one below (for Windows)
-1. Head over to the [latest release](https://github.com/pinodex/nlbot/latest).
+1. Head over to the [latest release](https://github.com/pinodex/nlbot/releases/latest) page.
 2. Download the first file in the *downloads* list.
 3. Extract all files from the ZIP file.
 4. Run the program.
