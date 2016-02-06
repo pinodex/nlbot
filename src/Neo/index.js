@@ -231,15 +231,14 @@ Neo.browseFiles = function (files) {
 
   function done () {
     Prompts.clear().ask('try_another', function (err, result) {
-      if (!result) {
-        return;
-      }
-
       if (result.confirm.toLowerCase() == 'y') {
         return Neo.askClass();
       }
 
       Prompts.println(colors.bold.red, 'Bye!');
+      Prompts.println('Exiting in 5 seconds...');
+      
+      Prompts.exitIn(5000);
     });
   }
 };

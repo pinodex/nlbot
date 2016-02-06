@@ -1,5 +1,6 @@
 node_modules/
 node_src/
-*.sublime-*
+tmp/
+bin/
 
-nlbot.exe
+*.sublime-*

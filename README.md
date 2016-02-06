@@ -13,7 +13,7 @@ Although this application get lessons marked as completed easily, you won't lear
 
 ### Installation
 1. Install [Node.js](https://nodejs.org/en/).
-2. Clone the repository, or download and extract the ZIP file.
+2. Clone the repository, or [download](https://github.com/pinodex/nlbot/archive/master.zip) and extract the ZIP file.
 3. Open command prompt/terminal and change the current directory to the cloned repository/extracted ZIP file directory.
 3. Install dependencies by entering `npm install`.
 4. Run the Node.js application by entering `node index.js`

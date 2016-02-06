@@ -158,6 +158,12 @@ Prompts.progressBar = function(completed, total, status, noClear) {
   return this;
 };
 
+Prompts.exitIn = function (ms) {
+  setTimeout(function () {
+    process.exit(0);
+  }, ms);
+}
+
 Prompts.ask = function (question, callback) {
   prompt.get(questions[question], callback);
 

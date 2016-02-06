@@ -9,15 +9,6 @@
 'use strict';
 
 /*
- * Workaround for 'nexe' not bundling dynamic requires.
- */
-var _nexeDynamicBundle = false;
-
-if (_nexeDynamicBundle) {
-  require('winston/lib/winston/nexe-bundle');
-}
-
-/*
  * Load String.prototype.repeat polyfill if the
  * current version does not support it.
  */
