@@ -18,3 +18,9 @@ Although this application get lessons marked as completed easily, you won't lear
 3. Install dependencies by entering `npm install`.
 4. Run the Node.js application by entering `node index.js`
 5. Follow on-screen instructions.
+
+#### Seems hard? Try the one below (for Windows)
+1. Head over to the [latest release](https://github.com/pinodex/nlbot/latest).
+2. Download the first file in the *downloads* list.
+3. Extract all files from the ZIP file.
+4. Run the program.
